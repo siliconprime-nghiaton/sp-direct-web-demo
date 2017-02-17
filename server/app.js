@@ -15,8 +15,6 @@ var NODE_ENV = process.env.NODE_ENV || 'development';
 nconf.argv().env().file({file: 'config/env/.' + NODE_ENV + '.json'});
 nconf.defaults( require('./../config/env/shared'));
 
-console.log(nconf.get('apiUrl'));
-
 // Setup server
 var app = express();
 var server = http.createServer(app);
