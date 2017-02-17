@@ -3,6 +3,8 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/vendor/assets/font
 $fa-font-path: "../bower_components/font-awesome/fonts";
 @import '../bower_components/font-awesome/scss/font-awesome';
 
+$primary-color: #006BE5;
+
 /**
  * App-wide Styles
  */
@@ -18,11 +20,17 @@ body {
   background-color: #F5F5F8;
 }
 
+.btn.btn-primary-custom {
+  color: #fff;
+  background-color: $primary-color;
+}
+
 // Component styles are injected through grunt
 // injector
 @import 'auth/signIn/signin.scss';
 @import 'auth/signUp/signUp.scss';
 @import '../components/layout/footer/footer.scss';
 @import '../components/modals/modal.scss';
+@import '../components/modals/signUpSuccess/signUpSuccess.modal.scss';
 // endinjector
 
