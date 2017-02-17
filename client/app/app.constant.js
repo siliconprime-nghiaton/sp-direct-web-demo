@@ -3,7 +3,7 @@
 
 angular.module('app.constants', [])
 
-.constant('appConfig', {userRoles:['guest','user','admin']})
+.constant('appConfig', {siteName:'SP-Direct-dev',cookieName:'SP-Direct-dev',envName:'DEV',debug:true,buildNumber:'1'})
 
 ;
 })(angular);

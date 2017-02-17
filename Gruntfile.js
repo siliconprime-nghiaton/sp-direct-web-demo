@@ -18,11 +18,13 @@ module.exports = function (grunt) {
     protractor: 'grunt-protractor-runner',
     buildcontrol: 'grunt-build-control',
     istanbul_check_coverage: 'grunt-mocha-istanbul',
-    ngconstant: 'grunt-ng-constant'
+    ngconstant: 'grunt-ng-constant',
+    buildnumber: 'grunt-build-number',
   });
 
   // Time how long tasks take. Can help when optimizing build times
   require('time-grunt')(grunt);
+  var _ = require('lodash');
 
   // Define the configuration for all the tasks
   grunt.initConfig({
@@ -33,11 +35,12 @@ module.exports = function (grunt) {
       // configurable paths
       client: require('./bower.json').appPath || 'client',
       server: 'server',
-      dist: 'dist'
+      dist: 'dist',
+      config: 'config'
     },
     express: {
       options: {
-        port: process.env.PORT || 5000
+        port: process.env.PORT || 9000
       },
       dev: {
         options: {
@@ -61,8 +64,12 @@ module.exports = function (grunt) {
         files: ['<%= yeoman.client %>/{app,components}/**/!(*.spec|*.mock).js'],
         tasks: ['newer:babel:client']
       },
+      // ngconstant: {
+      //   files: ['<%= yeoman.server %>/config/environment/shared.js'],
+      //   tasks: ['ngconstant']
+      // },
       ngconstant: {
-        files: ['<%= yeoman.server %>/config/environment/shared.js'],
+        files: ['config/env/shared.js','config/web-env/*.js'],
         tasks: ['ngconstant']
       },
       injectJS: {
@@ -117,6 +124,14 @@ module.exports = function (grunt) {
         files: ['bower.json'],
         tasks: ['wiredep']
       },
+      config: {
+        files: ['config/env/{*,.*}.{js,json}'],
+        tasks: ['express:dev', 'wait'],
+        options: {
+          livereload: true,
+          spawn: false //Without this option specified express won't be reloaded
+        }
+      }
     },
 
     // Make sure code styles are up to par and there are no obvious mistakes
@@ -312,24 +327,47 @@ module.exports = function (grunt) {
 
     // Dynamically generate angular constant `appConfig` from
     // `server/config/environment/shared.js`
-    ngconstant: {
-      options: {
-        name: 'app.constants',
-        dest: '<%= yeoman.client %>/app/app.constant.js',
-        deps: [],
-        wrap: true,
-        configPath: '<%= yeoman.server %>/config/environment/shared'
-      },
-      app: {
-        constants: function() {
-          return {
-            appConfig: require('./' + grunt.config.get('ngconstant.options.configPath'))
-          };
-        }
-      }
-    },
+    // ngconstant: {
+    //   options: {
+    //     name: 'app.constants',
+    //     dest: '<%= yeoman.client %>/app/app.constant.js',
+    //     deps: [],
+    //     wrap: true,
+    //     configPath: '<%= yeoman.server %>/config/environment/shared'
+    //   },
+    //   app: {
+    //     constants: function() {
+    //       return {
+    //         appConfig: require('./' + grunt.config.get('ngconstant.options.configPath'))
+    //       };
+    //     }
+    //   }
+    // },
 
-    // Package all the html partials into a single javascript payload
+    ngconstant: {
+        options: {
+          name: 'app.constants',
+          dest: '<%= yeoman.client %>/app/app.constant.js',
+          deps: [],
+          wrap: true,
+          configPath: '<%= yeoman.config %>/env/shared'
+        },
+        app: {
+          constants: function() {
+            var sharedConfig = require('./' + grunt.config.get('ngconstant.options.configPath'));
+            console.log(sharedConfig)
+            var pkg = grunt.config.get('pkg');
+            var env = process.env.NODE_ENV || 'development'
+            var extendPath = './' +  grunt.config.get('yeoman.config') + '/web-env/' + env;
+            return {
+              appConfig: _.defaultsDeep(require(extendPath), sharedConfig, {buildNumber: pkg.buildNumber})
+            };
+          }
+        }
+      },
+
+
+      // Package all the html partials into a single javascript payload
     ngtemplates: {
       options: {
         // This should be the name of your apps angular module
@@ -649,7 +687,16 @@ module.exports = function (grunt) {
         }
       }
     },
+
+    buildnumber: {
+      options: {
+        field: 'buildNumber',
+      },
+      files: ['package.json']
+    }
   });
+
+
 
   // Used for delaying livereload until after server has restarted
   grunt.registerTask('wait', function () {

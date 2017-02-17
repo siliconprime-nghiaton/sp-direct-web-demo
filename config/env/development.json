@@ -1,0 +1,11 @@
+{
+  "apiUrl5": "http://apistaging21.dropininc.com/",
+  "apiUrl2": "https://apiprod21.dropininc.com/",
+  "apiUrl1": "http://apiqa21.dropininc.com/",
+  "apiUrl": "http://apidev21.dropininc.com/",
+  "apiUrl3": "http://apiqa21.dropininc.com/",
+  "apiKey": "0daa0330-2896-11e6-986b-e7572d6f3437",
+  "IS_LOCAL_HOST": true,
+  "IS_SHOW_SPEED_TEST_PAGE": true,
+  "IS_DEVELOPMENT_WEB": true
+}

@@ -9,16 +9,13 @@ import mongoose from 'mongoose';
 mongoose.Promise = require('bluebird');
 import config from './config/environment';
 import http from 'http';
+import nconf from 'nconf';
 
-// Connect to MongoDB
-mongoose.connect(config.mongo.uri, config.mongo.options);
-mongoose.connection.on('error', function(err) {
-  console.error('MongoDB connection error: ' + err);
-  process.exit(-1);
-});
+var NODE_ENV = process.env.NODE_ENV || 'development';
+nconf.argv().env().file({file: 'config/env/.' + NODE_ENV + '.json'});
+nconf.defaults( require('./../config/env/shared'));
 
-// Populate databases with sample data
-if (config.seedDB) { require('./config/seed'); }
+console.log(nconf.get('apiUrl'));
 
 // Setup server
 var app = express();
