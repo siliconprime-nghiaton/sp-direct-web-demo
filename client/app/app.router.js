@@ -17,6 +17,13 @@
         controllerAs: 'vm'
       })
 
+      .state('signUp', {
+        url: '/sign-up',
+        templateUrl: 'app/auth/signUp/signUp.html',
+        controller: 'SignUpController',
+        controllerAs: 'vm'
+      })
+
       .state('main', {
         url: '/main',
         templateUrl: 'app/main/index.html'
@@ -34,7 +41,7 @@
     $rootScope.$on('$stateChangeStart', function (event, toState, toParams, fromState, fromParams) {
       console.log("State Change Start Event",toState);
       if (toState.name === 'index') {
-        $state.go('signIn')
+        $state.go('signUp')
       }
     })
   }

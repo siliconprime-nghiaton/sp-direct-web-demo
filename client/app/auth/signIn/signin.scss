@@ -1,0 +1,43 @@
+.sign-in-form {
+  text-align: center;
+  transform: translate(-50%,-50%);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 350px;
+
+  .form-header {
+    .logo {
+      width: 90px;
+      height: 90px;
+      display: inline-block;
+      box-shadow: 0 0 5px 6px #dedede;
+      margin: auto;
+      background-color: #fff;
+    }
+    .title {
+      font-weight: bold;
+      font-size: 18px;
+      margin: 50px 0;
+    }
+  }
+
+  .form-body {
+    .form-group {
+      input {
+        border-radius: 20px;
+        padding: 22px 30px;
+        border: none;
+        box-shadow: 1px 2px 0 1px #dedede
+      }
+
+      #submit {
+        background-color: #006BE5;
+        border-radius: 20px;
+        padding: 10px 75px;
+        font-size: 18px;
+        margin-top:10px
+      }
+    }
+  }
+}
