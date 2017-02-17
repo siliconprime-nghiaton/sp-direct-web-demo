@@ -2,6 +2,7 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/vendor/assets/font
 @import '../bower_components/bootstrap-sass-official/vendor/assets/stylesheets/bootstrap';
 $fa-font-path: "../bower_components/font-awesome/fonts";
 @import '../bower_components/font-awesome/scss/font-awesome';
+@import '../bower_components/awesome-bootstrap-checkbox/awesome-bootstrap-checkbox.scss';
 
 $primary-color: #006BE5;
 
@@ -27,6 +28,7 @@ body {
 
 // Component styles are injected through grunt
 // injector
+@import 'auth/auth.scss';
 @import 'auth/signIn/signin.scss';
 @import 'auth/signUp/signUp.scss';
 @import '../components/layout/footer/footer.scss';

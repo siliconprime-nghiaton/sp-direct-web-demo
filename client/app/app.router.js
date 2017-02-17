@@ -11,7 +11,7 @@
   function routeConfig($stateProvider) {
     $stateProvider
       .state('signIn', {
-        url: '/signIn',
+        url: '/sign-in',
         templateUrl: 'app/auth/signIn/signIn.html',
         controller: 'SignInController',
         controllerAs: 'vm'

@@ -4,40 +4,37 @@
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 350px;
-
-  .form-header {
-    .logo {
-      width: 90px;
-      height: 90px;
-      display: inline-block;
-      box-shadow: 0 0 5px 6px #dedede;
-      margin: auto;
-      background-color: #fff;
-    }
-    .title {
-      font-weight: bold;
-      font-size: 18px;
-      margin: 50px 0;
-    }
-  }
+  width: 400px;
 
   .form-body {
-    .form-group {
-      input {
-        border-radius: 20px;
-        padding: 22px 30px;
-        border: none;
-        box-shadow: 1px 2px 0 1px #dedede
-      }
-
-      #submit {
-        background-color: #006BE5;
-        border-radius: 20px;
-        padding: 10px 75px;
-        font-size: 18px;
-        margin-top:10px
-      }
+    input.custom-input {
+      width: 320px;
+      margin: 0 auto;
     }
+
+    .checkbox {
+      text-align: left;
+      margin-left: 68px;
+      color: #D2D2D3;
+    }
+  }
+}
+
+@media (max-device-width : 320px) {
+  .sign-in-form {
+    top: 60%;
+    width: 280px;
+  }
+}
+
+@media (max-device-width : 667px) {
+  .sign-in-form {
+    top: 90%;
+  }
+}
+
+@media (max-device-width : 568px) {
+  .sign-in-form {
+    top: 105%;
   }
 }
