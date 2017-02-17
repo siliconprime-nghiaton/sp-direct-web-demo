@@ -7,7 +7,10 @@
     }
 
     submit(form) {
-      this.$state.go('main.home')
+      form.$setSubmitted();
+      if (form.$valid) {
+        this.$state.go('main.home')
+      }
     }
   }
 

@@ -21,15 +21,17 @@
       </div>
       <div class="form-group" ng-class="{'has-error': form.$submitted && form.password.$invalid}">
         <input class="form-control custom-input" type="password" id="password" name="password" placeholder="Password"
-               ng-required="true" ng-model="vm.obj.password"
+               ng-required="true" ng-minlength="6" ng-model="vm.obj.password"
         >
         <p class="help-block" ng-if="form.$submitted && form.password.$error.required">Password is required</p>
+        <p class="help-block" ng-if="form.$submitted && form.password.$error.minlength">Password is at least 6 chars</p>
       </div>
       <div class="form-group" ng-class="{'has-error': form.$submitted && form.confirmPassword.$invalid}">
         <input class="form-control custom-input" type="password" id="confirmPassword" name="confirmPassword" placeholder="Confirm Password"
                ng-model="vm.obj.confirmPassword" match="vm.obj.password"
         >
         <p class="help-block" ng-if="form.$submitted && form.confirmPassword.$error.match">Confirm password dose not match</p>
+
       </div>
       <div class="form-group">
         <button id="submit" type="submit" class="btn btn-primary-custom">SIGN UP</button>

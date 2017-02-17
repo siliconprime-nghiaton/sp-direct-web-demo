@@ -6,7 +6,7 @@
   configuration.$inject = ['$urlRouterProvider', '$locationProvider'];
   function configuration($urlRouterProvider, $locationProvider) {
     $urlRouterProvider
-      .otherwise('/signIn');
+      .otherwise('/sign-in');
 
     $locationProvider.html5Mode(true);
   }

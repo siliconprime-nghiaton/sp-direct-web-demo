@@ -1,22 +1,23 @@
 <div class="sign-in-form">
-
   <div class="form-header">
     <div class="logo"></div>
     <p class="title">Talk to your customer information live video is the fastest way to engage your customers</p>
   </div>
   <div class="form-body">
     <form  name="form" ng-submit="vm.submit(form)" novalidate>
-      <div class="form-group" ng-class="{'has-error': form.$submitted && form.name.$invalid}">
-        <input class="form-control custom-input" type="text" id="name" name="name" placeholder="Name"
-               ng-required="true" ng-model="vm.obj.name" ng-maxlength="50"
+      <div class="form-group" ng-class="{'has-error': form.$submitted && form.email.$invalid}">
+        <input class="form-control custom-input" type="email" id="email" name="email" placeholder="Email"
+               ng-required="true" ng-model="vm.obj.email"
         >
-        <p class="help-block" ng-if="form.$submitted && form.name.$error.required">Name is required</p>
+        <p class="help-block" ng-if="form.$submitted && form.email.$error.required">Email is required</p>
+        <p class="help-block" ng-if="form.$submitted && form.email.$error.email">Invalid email format</p>
       </div>
       <div class="form-group" ng-class="{'has-error': form.$submitted && form.password.$invalid}">
         <input class="form-control custom-input" type="password" id="password" name="password" placeholder="Password"
-               ng-required="true" ng-model="vm.obj.password"
+               ng-required="true" ng-model="vm.obj.password" ng-minlength="6"
         >
         <p class="help-block" ng-if="form.$submitted && form.password.$error.required">Password is required</p>
+        <p class="help-block" ng-if="form.$submitted && form.password.$error.minlength">Password is at least 6 chars</p>
       </div>
       <div class="checkbox">
         <input type="checkbox" id="checkbox1">
