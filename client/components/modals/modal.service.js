@@ -24,13 +24,22 @@ angular.module('app.modals')
       return $modal.open({
         templateUrl: 'components/modals/signUpSuccess/signUpSuccess.modal.html',
         windowClass: 'sign-up-success-modal',
-        size: 'md'
+        size: 'sm'
+      });
+    }
+
+    function openForgotPasswordSuccessModal() {
+      return $modal.open({
+        templateUrl: 'components/modals/forgotPasswordSuccess/forgotPasswordSuccess.modal.html',
+        windowClass: 'forgot-password-success-modal',
+        size: 'sm'
       });
     }
 
     // Public API here
     return {
       openSignUpSuccessModal: openSignUpSuccessModal,
+      openForgotPasswordSuccessModal: openForgotPasswordSuccessModal,
 
       /* Confirmation modals */
       confirm: {

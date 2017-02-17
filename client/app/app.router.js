@@ -24,6 +24,13 @@
         controllerAs: 'vm'
       })
 
+      .state('forgotPassword', {
+        url: '/forgot-password',
+        templateUrl: 'app/auth/forgotPassword/forgotPassword.html',
+        controller: 'ForgotPasswordController',
+        controllerAs: 'vm'
+      })
+
       .state('main', {
         url: '/main',
         templateUrl: 'app/main/index.html'
