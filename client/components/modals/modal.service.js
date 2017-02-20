@@ -23,7 +23,7 @@ angular.module('app.modals')
     function openSignUpSuccessModal() {
       return $modal.open({
         templateUrl: 'components/modals/signUpSuccess/signUpSuccess.modal.html',
-        windowClass: 'sign-up-success-modal',
+        windowClass: 'no-header-modal',
         size: 'sm'
       });
     }
@@ -31,7 +31,7 @@ angular.module('app.modals')
     function openForgotPasswordSuccessModal() {
       return $modal.open({
         templateUrl: 'components/modals/forgotPasswordSuccess/forgotPasswordSuccess.modal.html',
-        windowClass: 'forgot-password-success-modal',
+        windowClass: 'no-header-modal',
         size: 'sm'
       });
     }
