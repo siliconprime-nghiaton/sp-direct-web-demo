@@ -31,6 +31,13 @@
         controllerAs: 'vm'
       })
 
+      .state('resetPassword', {
+        url: '/reset-password',
+        templateUrl: 'app/auth/resetPassword/resetPassword.html',
+        controller: 'ResetPasswordController',
+        controllerAs: 'vm'
+      })
+
       .state('main', {
         url: '/main',
         templateUrl: 'app/main/index.html'

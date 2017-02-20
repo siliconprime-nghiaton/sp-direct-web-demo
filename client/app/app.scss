@@ -26,7 +26,7 @@ body {
   background-color: $primary-color;
 }
 
-.sign-up-form, .sign-in-form, .forgot-password-form {
+.sign-up-form, .sign-in-form, .forgot-password-form, .reset-password-form {
   .form-header {
     .logo {
       width: 110px;
@@ -41,6 +41,15 @@ body {
       font-weight: bold;
       font-size: 18px;
       margin: 40px 0 25px;
+
+      &.bg-title {
+        font-size: 25px;
+      }
+      &.md-title {
+        font-size: 18px;
+        margin: 0 0 30px;
+        font-weight: normal;
+      }
     }
   }
 
@@ -104,6 +113,7 @@ body {
 // Component styles are injected through grunt
 // injector
 @import 'auth/forgotPassword/forgotPassword.scss';
+@import 'auth/resetPassword/resetPassword.scss';
 @import 'auth/signIn/signin.scss';
 @import 'auth/signUp/signUp.scss';
 @import '../components/layout/footer/footer.scss';
@@ -111,7 +121,7 @@ body {
 // endinjector
 
 @media all and (min-width: 320px) and (max-width: 768px) {
-  .sign-up-form, .sign-in-form, .forgot-password-form {
+  .sign-up-form, .sign-in-form, .forgot-password-form, .reset-password-form {
     width: auto;
     -ms-transform: translate(0%,0%);
     -webkit-transform: translate(0%,0%);
