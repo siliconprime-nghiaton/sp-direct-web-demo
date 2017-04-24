@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('app.modals')
-  .factory('Modal', function ($rootScope, $modal) {
+  .factory('ModalService', function ($rootScope, $modal) {
     /**
      * Opens a modal
      * @param  {Object} scope      - an object to be merged with modal's scope
@@ -14,14 +14,32 @@ angular.module('app.modals')
       angular.extend(modalScope, scope);
 
       return $modal.open({
-        templateUrl: 'components/modal/modal.html',
+        templateUrl: 'components/modals/modal.html',
         windowClass: modalClass,
         scope: modalScope
       });
     }
 
+    function openSignUpSuccessModal() {
+      return $modal.open({
+        templateUrl: 'components/modals/signUpSuccess/signUpSuccess.modal.html',
+        windowClass: 'no-header-modal',
+        size: 'sm'
+      });
+    }
+
+    function openForgotPasswordSuccessModal() {
+      return $modal.open({
+        templateUrl: 'components/modals/forgotPasswordSuccess/forgotPasswordSuccess.modal.html',
+        windowClass: 'no-header-modal',
+        size: 'sm'
+      });
+    }
+
     // Public API here
     return {
+      openSignUpSuccessModal: openSignUpSuccessModal,
+      openForgotPasswordSuccessModal: openForgotPasswordSuccessModal,
 
       /* Confirmation modals */
       confirm: {

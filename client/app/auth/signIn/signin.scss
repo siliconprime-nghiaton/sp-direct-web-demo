@@ -1,0 +1,21 @@
+.sign-in-form {
+  text-align: center;
+  transform: translate(-50%,-50%);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 400px;
+
+  .form-body {
+    input.custom-input {
+      margin: 0 auto;
+    }
+
+    .checkbox {
+      text-align: left;
+      margin-left: 30px;
+      color: #D2D2D3;
+    }
+  }
+}
+
